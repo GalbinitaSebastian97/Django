@@ -13,8 +13,9 @@ def contact_view(request, *args, **kwargs):
     return render(request, "contact.html", contact_dict)
 
 def about_view(request, *args, **kwargs):
-    my_dict = {
-        "user" : "Galbinita Sebastian",
-        "age" : "23"
-    }
-    return render(request, 'about.html', my_dict)
+    my_context= {
+            "user" : "Galbinita Sebastian",
+            "age" : "23",
+            "my_list" : [1,2,3,"abc"]
+        }
+    return render(request, 'about.html', my_context)
