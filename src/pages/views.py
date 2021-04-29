@@ -1,21 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
-def home_view(request, *args, **kwargs):
-    # return HttpResponse("<h1>Hello World<h1>")
-    return render(request, "home.html", {})
-
-def contact_view(request, *args, **kwargs):
-    contact_dict = {
-        "details" : " One detail about me"
+posts = [
+    {
+        'author': 'CoreyMS',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'August 27, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'August 28, 2018'
     }
-    return render(request, "contact.html", contact_dict)
+]
+
+
+def home_view(request, *args, **kwargs):
+    context = {
+        'posts': posts
+    }
+    return render(request, 'home.html', context)
+# Create your views here.
 
 def about_view(request, *args, **kwargs):
-    my_context= {
-            "user" : "Galbinita Sebastian",
-            "age" : "23",
-            "my_list" : [1,2,3,"abc"]
-        }
-    return render(request, 'about.html', my_context)
+    return render(request, 'about.html', {})
