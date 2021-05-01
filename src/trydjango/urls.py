@@ -19,6 +19,9 @@ from pages.views import home_view, about_view
 from products.views import product_detail_view, product_create_view, search_view
 from users.views import register,profile
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static 
+
 urlpatterns = [
     
     path('',home_view, name = "home"),
@@ -32,3 +35,6 @@ urlpatterns = [
     path('logout/',auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name = 'logout'),
     path('profile/',profile, name = "profile")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )
