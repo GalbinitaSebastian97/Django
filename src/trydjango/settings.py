@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'products',
-    'pages',
+    'blog.apps.BlogConfig',
 ]
 
 
@@ -58,9 +58,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'trydjango.urls'
 
 TEMPLATES = [
-    {
+    {   
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"templates")],
+        'DIRS': [],##os.path.join(BASE_DIR,"templates")
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,5 +132,5 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
