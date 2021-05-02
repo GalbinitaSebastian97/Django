@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from pages.views import home_view, about_view
+from django.urls import path, include
+from blog.views import home_view, about_view
 from products.views import product_detail_view, product_create_view, search_view
 from users.views import register,profile
 from django.contrib.auth import views as auth_views
@@ -24,16 +24,17 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     
-    path('',home_view, name = "home"),
-    path('register/',register, name='register'),
-    path('product/',product_detail_view),
+    ##path('register/',register, name='register'),
     path('create/',product_create_view),
     path('search/',search_view),
     path('admin/', admin.site.urls),
     path("about/",about_view, name = "about"),
-    path('login/',auth_views.LoginView.as_view(template_name = 'users/login.html'), name = 'login'),
-    path('logout/',auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name = 'logout'),
-    path('profile/',profile, name = "profile")
+    ##path('login/',auth_views.LoginView.as_view(template_name = 'users/login.html'), name = 'login'),
+    ##path('logout/',auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name = 'logout'),
+    ##path('profile/',profile, name = "profile"),
+
+    path('', include('blog.urls')),
+    path('', include('users.urls'))
 ]
 
 if settings.DEBUG:
