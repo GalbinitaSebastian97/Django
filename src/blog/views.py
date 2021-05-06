@@ -8,6 +8,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+
 from .models import Post
 
 def home_view(request, *args, **kwargs):
